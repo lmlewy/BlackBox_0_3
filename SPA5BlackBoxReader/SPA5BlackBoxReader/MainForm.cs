@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using System.Resources;
 using System.Globalization;
 using System.IO;
+using System.Collections.ObjectModel;
+//using System.Windows.Data;
+using DataGridViewAutoFilter;
 
 namespace SPA5BlackBoxReader
 {
@@ -21,6 +24,8 @@ namespace SPA5BlackBoxReader
 
         private BackgroundWorker binHexBackgroundWorker = null;
         private BackgroundWorker decodeMessagesBackgroundWorker = null;
+
+        //DataTable table = new DataTable();
 
         string[] filesToRead;
  
@@ -52,6 +57,21 @@ namespace SPA5BlackBoxReader
 
             this.tabPageBin.Text = resmgr.GetString("labelBin", ci);
             this.tabPageDecEventTable.Text = resmgr.GetString("labelDecEventTable", ci);
+
+            dataGridViewEventsAndAlarms.BindingContextChanged += new EventHandler(dataGridViewEventsAndAlarms_BindingContextChanged);
+
+            
+            //table.Columns.Add(resmgr.GetString("labelTime", ci), typeof(string)) ;
+            //table.Columns.Add(resmgr.GetString("labelLxNumber", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelChannel", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelNumber", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelName", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelStatus", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelCategory", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelGroup", ci), typeof(string));
+
+            //dataGridViewEventsAndAlarms.DataSource = table;
+
         }
 
         private void polskiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,16 +167,69 @@ namespace SPA5BlackBoxReader
         private void showData(string[] filesToRead)
         {
 
+            //tabControl.SelectTab(tabPageDecEventTable);
+            //List<string[]> decodedFramesList = new List<string[]>();
+
+            ////https://msdn.microsoft.com/en-us/library/system.windows.forms.bindingsource.filter(v=vs.110).aspx
+            ////https://msdn.microsoft.com/en-us/library/aa480727.aspx
+            ////https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/bind-data-to-the-datagrid-using-the-designer
+
+            //DataTable table = new DataTable();
+            //table.Columns.Add(resmgr.GetString("labelTime", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelLxNumber", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelChannel", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelNumber", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelName", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelStatus", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelCategory", ci), typeof(string));
+            //table.Columns.Add(resmgr.GetString("labelGroup", ci), typeof(string));
+            ////binding1 = new BindingSource(DataTable table);
+
+            //foreach (String FileName in filesToRead)
+            //{
+            //    byte[] fileBytes = File.ReadAllBytes(@FileName);
+            //    ListOfFrames decodedList = new ListOfFrames();
+            //    decodedFramesList = decodedList.DecodeFileAsList(fileBytes);
+
+            //    foreach (var row in decodedFramesList)
+            //    {
+            //        table.Rows.Add(row);
+            //    }
+
+            //    dataGridViewEventsAndAlarms.DataSource = table;
+            //}
+
+            //DataGridViewColumn column = dataGridViewEventsAndAlarms.Columns[0];
+            //column.Width = 130;
+            ////column.
+            //column = dataGridViewEventsAndAlarms.Columns[1];
+            //column.Width = 60;
+            ////column.HeaderCell = new DataGridViewAutoFilterColumnHeaderCell(column);
+            //column = dataGridViewEventsAndAlarms.Columns[2];
+            //column.Width = 60;
+            //column = dataGridViewEventsAndAlarms.Columns[3];
+            //column.Width = 110;
+            //column = dataGridViewEventsAndAlarms.Columns[4];
+            //column.Width = 200;
+            //column = dataGridViewEventsAndAlarms.Columns[7];
+            //column.Width = 70;
+            ////dataGridViewEventsAndAlarms.Sort(dataGridViewEventsAndAlarms.Columns[1], ListSortDirection.Ascending); to nic nie daje
+
+            //// Do tego miejsca było robione po staremu
+
+
+
+            // od tego miejsca po nowemu
+            // https://msdn.microsoft.com/en-us/library/Aa480727.aspx
+
             tabControl.SelectTab(tabPageDecEventTable);
             List<string[]> decodedFramesList = new List<string[]>();
 
-
-            //https://msdn.microsoft.com/en-us/library/system.windows.forms.bindingsource.filter(v=vs.110).aspx
-            //https://msdn.microsoft.com/en-us/library/aa480727.aspx
-            //https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/bind-data-to-the-datagrid-using-the-designer
+            BindingSource customersBindingSource = new BindingSource();
+            dataGridViewEventsAndAlarms.DataSource = customersBindingSource;
 
             DataTable table = new DataTable();
-            table.Columns.Add(resmgr.GetString("labelTime", ci), typeof(string));
+            table.Columns.Add(resmgr.GetString("labelTime", ci), typeof(string)) ;
             table.Columns.Add(resmgr.GetString("labelLxNumber", ci), typeof(string));
             table.Columns.Add(resmgr.GetString("labelChannel", ci), typeof(string));
             table.Columns.Add(resmgr.GetString("labelNumber", ci), typeof(string));
@@ -164,7 +237,9 @@ namespace SPA5BlackBoxReader
             table.Columns.Add(resmgr.GetString("labelStatus", ci), typeof(string));
             table.Columns.Add(resmgr.GetString("labelCategory", ci), typeof(string));
             table.Columns.Add(resmgr.GetString("labelGroup", ci), typeof(string));
-            //binding1 = new BindingSource(DataTable table);
+
+            //customersBindingSource.Add(table);
+            customersBindingSource.DataSource = table;
 
             foreach (String FileName in filesToRead)
             {
@@ -172,28 +247,48 @@ namespace SPA5BlackBoxReader
                 ListOfFrames decodedList = new ListOfFrames();
                 decodedFramesList = decodedList.DecodeFileAsList(fileBytes);
 
+
+
+
+
+
                 foreach (var row in decodedFramesList)
                 {
                     table.Rows.Add(row);
+
+
                 }
 
-                dataGridViewEventsAndAlarms.DataSource = table;
+                //dataGridViewEventsAndAlarms.DataSource = table;
+                dataGridViewEventsAndAlarms.DataSource = customersBindingSource;
 
             }
 
-            DataGridViewColumn column = dataGridViewEventsAndAlarms.Columns[0];
-            column.Width = 130;
-            column = dataGridViewEventsAndAlarms.Columns[1];
-            column.Width = 60;
-            //column.HeaderCell = new DataGridViewAutoFilterColumnHeaderCell(column);
-            column = dataGridViewEventsAndAlarms.Columns[2];
-            column.Width = 60;
-            column = dataGridViewEventsAndAlarms.Columns[3];
-            column.Width = 110;
-            column = dataGridViewEventsAndAlarms.Columns[4];
-            column.Width = 200;
-            column = dataGridViewEventsAndAlarms.Columns[7];
-            column.Width = 70;
+
+            comboBox1.DataSource = customersBindingSource;
+
+
+            
+
+
+
+
+
+        }
+
+        private void dataGridViewEventsAndAlarms_BindingContextChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewEventsAndAlarms.DataSource == null) return;
+
+            foreach (DataGridViewColumn col in dataGridViewEventsAndAlarms.Columns)
+            {
+                col.HeaderCell = new
+                    DataGridViewAutoFilterColumnHeaderCell(col.HeaderCell);
+            }
+            dataGridViewEventsAndAlarms.AutoResizeColumns();
+
+
+
 
 
         }

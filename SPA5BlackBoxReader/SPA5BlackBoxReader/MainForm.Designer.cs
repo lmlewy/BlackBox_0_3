@@ -47,6 +47,7 @@
             this.tabPageBin = new System.Windows.Forms.TabPage();
             this.richTextBoxBin = new System.Windows.Forms.RichTextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPageDecEventTable.SuspendLayout();
@@ -163,6 +164,7 @@
             // 
             // tabPageDecEventTable
             // 
+            this.tabPageDecEventTable.Controls.Add(this.comboBox1);
             this.tabPageDecEventTable.Controls.Add(this.dataGridViewEventsAndAlarms);
             this.tabPageDecEventTable.Location = new System.Drawing.Point(4, 22);
             this.tabPageDecEventTable.Name = "tabPageDecEventTable";
@@ -182,6 +184,7 @@
             this.dataGridViewEventsAndAlarms.Name = "dataGridViewEventsAndAlarms";
             this.dataGridViewEventsAndAlarms.Size = new System.Drawing.Size(883, 316);
             this.dataGridViewEventsAndAlarms.TabIndex = 0;
+            this.dataGridViewEventsAndAlarms.BindingContextChanged += new System.EventHandler(this.dataGridViewEventsAndAlarms_BindingContextChanged);
             // 
             // tabPageBin
             // 
@@ -217,6 +220,14 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(903, 413);
             this.tabControl.TabIndex = 2;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(180, 347);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -263,6 +274,7 @@
         private System.Windows.Forms.TabPage tabPageBin;
         private System.Windows.Forms.RichTextBox richTextBoxBin;
         private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
