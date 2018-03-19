@@ -43,11 +43,12 @@
             this.labelInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelAboutProgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageDecEventTable = new System.Windows.Forms.TabPage();
+            this.comboBoxLxNumber = new System.Windows.Forms.ComboBox();
             this.dataGridViewEventsAndAlarms = new System.Windows.Forms.DataGridView();
             this.tabPageBin = new System.Windows.Forms.TabPage();
             this.richTextBoxBin = new System.Windows.Forms.RichTextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxLxChannel = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPageDecEventTable.SuspendLayout();
@@ -62,7 +63,7 @@
             this.toolStripProgressBar});
             this.statusStrip1.Location = new System.Drawing.Point(0, 443);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(918, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(923, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -79,7 +80,7 @@
             this.labelInfoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(918, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(923, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -164,15 +165,27 @@
             // 
             // tabPageDecEventTable
             // 
-            this.tabPageDecEventTable.Controls.Add(this.comboBox1);
+            this.tabPageDecEventTable.Controls.Add(this.comboBoxLxChannel);
+            this.tabPageDecEventTable.Controls.Add(this.comboBoxLxNumber);
             this.tabPageDecEventTable.Controls.Add(this.dataGridViewEventsAndAlarms);
             this.tabPageDecEventTable.Location = new System.Drawing.Point(4, 22);
             this.tabPageDecEventTable.Name = "tabPageDecEventTable";
             this.tabPageDecEventTable.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDecEventTable.Size = new System.Drawing.Size(895, 387);
+            this.tabPageDecEventTable.Size = new System.Drawing.Size(900, 387);
             this.tabPageDecEventTable.TabIndex = 2;
             this.tabPageDecEventTable.Text = "tabPageDecEventTable";
             this.tabPageDecEventTable.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxLxNumber
+            // 
+            this.comboBoxLxNumber.FormattingEnabled = true;
+            this.comboBoxLxNumber.Items.AddRange(new object[] {
+            "82",
+            " "});
+            this.comboBoxLxNumber.Location = new System.Drawing.Point(177, 6);
+            this.comboBoxLxNumber.Name = "comboBoxLxNumber";
+            this.comboBoxLxNumber.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxLxNumber.TabIndex = 1;
             // 
             // dataGridViewEventsAndAlarms
             // 
@@ -180,9 +193,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewEventsAndAlarms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEventsAndAlarms.Location = new System.Drawing.Point(6, 6);
+            this.dataGridViewEventsAndAlarms.Location = new System.Drawing.Point(6, 33);
             this.dataGridViewEventsAndAlarms.Name = "dataGridViewEventsAndAlarms";
-            this.dataGridViewEventsAndAlarms.Size = new System.Drawing.Size(883, 316);
+            this.dataGridViewEventsAndAlarms.Size = new System.Drawing.Size(888, 321);
             this.dataGridViewEventsAndAlarms.TabIndex = 0;
             this.dataGridViewEventsAndAlarms.BindingContextChanged += new System.EventHandler(this.dataGridViewEventsAndAlarms_BindingContextChanged);
             // 
@@ -218,22 +231,22 @@
             this.tabControl.Location = new System.Drawing.Point(12, 27);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(903, 413);
+            this.tabControl.Size = new System.Drawing.Size(908, 413);
             this.tabControl.TabIndex = 2;
             // 
-            // comboBox1
+            // comboBoxLxChannel
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(180, 347);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.comboBoxLxChannel.FormattingEnabled = true;
+            this.comboBoxLxChannel.Location = new System.Drawing.Point(238, 6);
+            this.comboBoxLxChannel.Name = "comboBoxLxChannel";
+            this.comboBoxLxChannel.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxLxChannel.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 465);
+            this.ClientSize = new System.Drawing.Size(923, 465);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -274,7 +287,8 @@
         private System.Windows.Forms.TabPage tabPageBin;
         private System.Windows.Forms.RichTextBox richTextBoxBin;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxLxNumber;
+        private System.Windows.Forms.ComboBox comboBoxLxChannel;
     }
 }
 

@@ -247,16 +247,9 @@ namespace SPA5BlackBoxReader
                 ListOfFrames decodedList = new ListOfFrames();
                 decodedFramesList = decodedList.DecodeFileAsList(fileBytes);
 
-
-
-
-
-
                 foreach (var row in decodedFramesList)
                 {
                     table.Rows.Add(row);
-
-
                 }
 
                 //dataGridViewEventsAndAlarms.DataSource = table;
@@ -264,9 +257,34 @@ namespace SPA5BlackBoxReader
 
             }
 
+            DataTable dtLxNum = table.DefaultView.ToTable(true, resmgr.GetString("labelLxNumber", ci));
+            comboBoxLxNumber.DataSource = dtLxNum;
+            comboBoxLxNumber.DisplayMember = resmgr.GetString("labelLxNumber", ci);
 
-            comboBox1.DataSource = customersBindingSource;
+            DataTable dtLxChannel = table.DefaultView.ToTable(true, resmgr.GetString("labelChannel", ci));
+            comboBoxLxChannel.DataSource = dtLxChannel;
+            comboBoxLxChannel.DisplayMember = resmgr.GetString("labelChannel", ci);
 
+
+
+            //comboBoxLxNumber.DataSource = customersBindingSource;
+            //comboBoxLxNumber.DisplayMember = resmgr.GetString("labelLxNumber", ci);
+            //comboBoxLxNumber
+
+            //customersBindingSource.Filter = string.Format("dataGridViewEventsAndAlarms = '{1}'", comboBoxLxNumber.Text);
+
+            DataGridViewColumn column = dataGridViewEventsAndAlarms.Columns[0];
+            column.Width = 130;
+            column = dataGridViewEventsAndAlarms.Columns[1];
+            column.Width = 60;
+            column = dataGridViewEventsAndAlarms.Columns[2];
+            column.Width = 60;
+            column = dataGridViewEventsAndAlarms.Columns[3];
+            column.Width = 110;
+            column = dataGridViewEventsAndAlarms.Columns[4];
+            column.Width = 200;
+            column = dataGridViewEventsAndAlarms.Columns[7];
+            column.Width = 70;
 
             
 
