@@ -257,9 +257,20 @@ namespace SPA5BlackBoxReader
 
             }
 
+
+            //https://stackoverflow.com/questions/199642/how-to-insert-empty-field-in-combobox-bound-to-datatable
+            //https://stackoverflow.com/questions/199642/how-to-insert-empty-field-in-combobox-bound-to-datatable
             DataTable dtLxNum = table.DefaultView.ToTable(true, resmgr.GetString("labelLxNumber", ci));
+            //dtLxNum.Rows.Add("");
+
+            DataRow dtrow = dtLxNum.NewRow();
+            dtrow[0] = "";
+            dtLxNum.Rows.Add(dtrow);
+
+            //dtLxNum.Merge(table.DefaultView.ToTable(true, resmgr.GetString("labelLxNumber", ci)));
             comboBoxLxNumber.DataSource = dtLxNum;
             comboBoxLxNumber.DisplayMember = resmgr.GetString("labelLxNumber", ci);
+            comboBoxLxNumber.SelectedText = " ";
 
             DataTable dtLxChannel = table.DefaultView.ToTable(true, resmgr.GetString("labelChannel", ci));
             comboBoxLxChannel.DataSource = dtLxChannel;

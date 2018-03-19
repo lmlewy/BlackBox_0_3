@@ -37,3 +37,17 @@ C:\Projekty\EWP\SPA5BlackBoxReader\SPA5BlackBoxReader_0_3\SPA5BlackBoxReader\SPA
 C:\Projekty\EWP\SPA5BlackBoxReader\SPA5BlackBoxReader_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\pl-PL\SPA5BlackBoxReader.resources.dll
 C:\Projekty\EWP\SPA5BlackBoxReader\SPA5BlackBoxReader_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.csprojResolveAssemblyReference.cache
 C:\Projekty\EWP\SPA5BlackBoxReader\SPA5BlackBoxReader_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\bin\Debug\DataGridViewAutoFilter.dll
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\bin\Debug\SPA5BlackBoxReader.exe.config
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.exe
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.pdb
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\bin\Debug\SPA5BlackBoxReader.exe
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\bin\Debug\SPA5BlackBoxReader.pdb
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\bin\Debug\pl-PL\SPA5BlackBoxReader.resources.dll
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\bin\Debug\DataGridViewAutoFilter.dll
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.csprojResolveAssemblyReference.cache
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.Lang.resources
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.MainForm.resources
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.Properties.Resources.resources
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.Lang.pl-PL.resources
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.csproj.GenerateResource.Cache
+E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\pl-PL\SPA5BlackBoxReader.resources.dll
