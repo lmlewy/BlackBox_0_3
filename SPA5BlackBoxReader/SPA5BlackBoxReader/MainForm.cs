@@ -14,6 +14,7 @@ using System.IO;
 using System.Collections.ObjectModel;
 //using System.Windows.Data;
 using DataGridViewAutoFilter;
+using System.Collections;
 
 namespace SPA5BlackBoxReader
 {
@@ -25,7 +26,7 @@ namespace SPA5BlackBoxReader
         private BackgroundWorker binHexBackgroundWorker = null;
         private BackgroundWorker decodeMessagesBackgroundWorker = null;
 
-        //DataTable table = new DataTable();
+        DataTable table = new DataTable();
 
         string[] filesToRead;
  
@@ -40,7 +41,23 @@ namespace SPA5BlackBoxReader
             CultureInfo.DefaultThreadCurrentCulture = ci;
 
             updateLabels();
-            richTextBoxBin.Multiline = true;   
+            richTextBoxBin.Multiline = true;
+
+            comboBoxLxNumber.Items.Add("*");
+            comboBoxLxNumber.SelectedText = "*";
+
+            comboBoxLxChannel.Items.Add("*");
+            comboBoxLxChannel.SelectedText = "*";
+
+            comboBoxEvAl.Items.Add("*");
+            comboBoxEvAl.SelectedText = "*";
+
+            dateTimePickerFrom.Format = DateTimePickerFormat.Custom;
+            dateTimePickerFrom.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+
+            dateTimePickerTo.Format = DateTimePickerFormat.Custom;
+            dateTimePickerTo.CustomFormat = "dd/MM/yyyy hh:mm:ss";  
+
         }
 
         private void updateLabels()
@@ -57,20 +74,6 @@ namespace SPA5BlackBoxReader
 
             this.tabPageBin.Text = resmgr.GetString("labelBin", ci);
             this.tabPageDecEventTable.Text = resmgr.GetString("labelDecEventTable", ci);
-
-            dataGridViewEventsAndAlarms.BindingContextChanged += new EventHandler(dataGridViewEventsAndAlarms_BindingContextChanged);
-
-            
-            //table.Columns.Add(resmgr.GetString("labelTime", ci), typeof(string)) ;
-            //table.Columns.Add(resmgr.GetString("labelLxNumber", ci), typeof(string));
-            //table.Columns.Add(resmgr.GetString("labelChannel", ci), typeof(string));
-            //table.Columns.Add(resmgr.GetString("labelNumber", ci), typeof(string));
-            //table.Columns.Add(resmgr.GetString("labelName", ci), typeof(string));
-            //table.Columns.Add(resmgr.GetString("labelStatus", ci), typeof(string));
-            //table.Columns.Add(resmgr.GetString("labelCategory", ci), typeof(string));
-            //table.Columns.Add(resmgr.GetString("labelGroup", ci), typeof(string));
-
-            //dataGridViewEventsAndAlarms.DataSource = table;
 
         }
 
@@ -162,8 +165,6 @@ namespace SPA5BlackBoxReader
 
         }
 
-        private BindingSource binding1;
-
         private void showData(string[] filesToRead)
         {
 
@@ -225,10 +226,7 @@ namespace SPA5BlackBoxReader
             tabControl.SelectTab(tabPageDecEventTable);
             List<string[]> decodedFramesList = new List<string[]>();
 
-            BindingSource customersBindingSource = new BindingSource();
-            dataGridViewEventsAndAlarms.DataSource = customersBindingSource;
-
-            DataTable table = new DataTable();
+            //DataTable table = new DataTable();
             table.Columns.Add(resmgr.GetString("labelTime", ci), typeof(string)) ;
             table.Columns.Add(resmgr.GetString("labelLxNumber", ci), typeof(string));
             table.Columns.Add(resmgr.GetString("labelChannel", ci), typeof(string));
@@ -237,9 +235,6 @@ namespace SPA5BlackBoxReader
             table.Columns.Add(resmgr.GetString("labelStatus", ci), typeof(string));
             table.Columns.Add(resmgr.GetString("labelCategory", ci), typeof(string));
             table.Columns.Add(resmgr.GetString("labelGroup", ci), typeof(string));
-
-            //customersBindingSource.Add(table);
-            customersBindingSource.DataSource = table;
 
             foreach (String FileName in filesToRead)
             {
@@ -252,52 +247,41 @@ namespace SPA5BlackBoxReader
                     table.Rows.Add(row);
                 }
 
-                //dataGridViewEventsAndAlarms.DataSource = table;
-                dataGridViewEventsAndAlarms.DataSource = customersBindingSource;
-
             }
 
+            //dataGridViewEventsAndAlarms.DataSource = table;
+            updateDataGridViewEventsAndAlarms(table);
 
             //https://stackoverflow.com/questions/199642/how-to-insert-empty-field-in-combobox-bound-to-datatable
-            //https://stackoverflow.com/questions/199642/how-to-insert-empty-field-in-combobox-bound-to-datatable
-            DataTable dtLxNum = table.DefaultView.ToTable(true, resmgr.GetString("labelLxNumber", ci));
-            //dtLxNum.Rows.Add("");
 
-            DataRow dtrow = dtLxNum.NewRow();
-            dtrow[0] = "";
-            dtLxNum.Rows.Add(dtrow);
+            //List<KeyValuePair<string, Guid>> list = new List<KeyValuePair<string, Guid>>(table.Rows.Cast<DataRow>().Select(row => new KeyValuePair<string, Guid>(row["Name"].ToString(), (Guid)row["Guid"])));
+            List<string> listLxNum = new List<string>(table.Rows.Cast<DataRow>().Select(row => row[resmgr.GetString("labelLxNumber", ci)].ToString()));
+            //list.Insert(0, new KeyValuePair<string, Guid>(string.Empty, Guid.Empty));
+            listLxNum.Insert(0, "*");
+            listLxNum = listLxNum.Distinct().ToList();
+            comboBoxLxNumber.DataSource = listLxNum;
+            //comboBoxLxNumber.ValueMember = "Value";
+            //comboBoxLxNumber.DisplayMember = "Key";
 
-            //dtLxNum.Merge(table.DefaultView.ToTable(true, resmgr.GetString("labelLxNumber", ci)));
-            comboBoxLxNumber.DataSource = dtLxNum;
-            comboBoxLxNumber.DisplayMember = resmgr.GetString("labelLxNumber", ci);
-            comboBoxLxNumber.SelectedText = " ";
+            List<string> listLxChannel = new List<string>(table.Rows.Cast<DataRow>().Select(row => row[resmgr.GetString("labelChannel", ci)].ToString()));
+            listLxChannel.Insert(0, "*");
+            listLxChannel = listLxChannel.Distinct().ToList();
+            comboBoxLxChannel.DataSource = listLxChannel;
+            //comboBoxLxChannel.DisplayMember = "Key";
 
-            DataTable dtLxChannel = table.DefaultView.ToTable(true, resmgr.GetString("labelChannel", ci));
-            comboBoxLxChannel.DataSource = dtLxChannel;
-            comboBoxLxChannel.DisplayMember = resmgr.GetString("labelChannel", ci);
+            List<string> listLxEvAl = new List<string>();
+            listLxEvAl.Insert(0, "*");
+            listLxEvAl.Insert(1, "Event");
+            listLxEvAl.Insert(2, "Alert");
+            comboBoxEvAl.DataSource = listLxEvAl;
+            //comboBoxEvAl.DisplayMember = "Key";
 
 
 
-            //comboBoxLxNumber.DataSource = customersBindingSource;
-            //comboBoxLxNumber.DisplayMember = resmgr.GetString("labelLxNumber", ci);
-            //comboBoxLxNumber
 
-            //customersBindingSource.Filter = string.Format("dataGridViewEventsAndAlarms = '{1}'", comboBoxLxNumber.Text);
 
-            DataGridViewColumn column = dataGridViewEventsAndAlarms.Columns[0];
-            column.Width = 130;
-            column = dataGridViewEventsAndAlarms.Columns[1];
-            column.Width = 60;
-            column = dataGridViewEventsAndAlarms.Columns[2];
-            column.Width = 60;
-            column = dataGridViewEventsAndAlarms.Columns[3];
-            column.Width = 110;
-            column = dataGridViewEventsAndAlarms.Columns[4];
-            column.Width = 200;
-            column = dataGridViewEventsAndAlarms.Columns[7];
-            column.Width = 70;
 
-            
+
 
 
 
@@ -305,22 +289,85 @@ namespace SPA5BlackBoxReader
 
         }
 
-        private void dataGridViewEventsAndAlarms_BindingContextChanged(object sender, EventArgs e)
+        private void comboBoxLxNumber_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (dataGridViewEventsAndAlarms.DataSource == null) return;
+            DataTable filteredDataTable = null;
 
-            foreach (DataGridViewColumn col in dataGridViewEventsAndAlarms.Columns)
+            if ((comboBoxLxNumber.SelectedItem != "*") && (comboBoxLxChannel.SelectedItem != "*"))
             {
-                col.HeaderCell = new
-                    DataGridViewAutoFilterColumnHeaderCell(col.HeaderCell);
+
+                MessageBox.Show("nie pusty");
+
+                //https://stackoverflow.com/questions/13012585/how-i-can-filter-a-datatable
+                //http://www.csharp-examples.net/dataview-rowfilter/
+                string _sqlWhere = resmgr.GetString("labelChannel", ci) + " = '" + comboBoxLxChannel.SelectedItem + "'";
+                filteredDataTable = table.Select(_sqlWhere).CopyToDataTable();
+
+                updateDataGridViewEventsAndAlarms(filteredDataTable);
+
             }
-            dataGridViewEventsAndAlarms.AutoResizeColumns();
+            else
+            {
+                MessageBox.Show("pusty");
+                updateDataGridViewEventsAndAlarms(table);
+            }
 
 
-
-
-
+            //updateDataGridViewEventsAndAlarms(filteredDataTable);
         }
+
+
+        private void updateDataGridViewEventsAndAlarms(DataTable dt)
+        {
+            dataGridViewEventsAndAlarms.DataSource = dt;
+
+            if (dt != null) //to nie działa
+            {
+                DataGridViewColumn column = dataGridViewEventsAndAlarms.Columns[0];
+                column.Width = 130;
+                column = dataGridViewEventsAndAlarms.Columns[1];
+                column.Width = 60;
+                column = dataGridViewEventsAndAlarms.Columns[2];
+                column.Width = 60;
+                column = dataGridViewEventsAndAlarms.Columns[3];
+                column.Width = 110;
+                column = dataGridViewEventsAndAlarms.Columns[4];
+                column.Width = 200;
+                column = dataGridViewEventsAndAlarms.Columns[5];
+                column.Width = 110;
+                column = dataGridViewEventsAndAlarms.Columns[6];
+                column.Width = 110;
+                column = dataGridViewEventsAndAlarms.Columns[7];
+                column.Width = 70;
+            }
+        }
+
+
+
+        // iterator dla combobox
+        //private IEnumerable GetDisplayTable(DataTable tbl)
+        //{
+        //    //yield return new { ObjectLogicalName = string.Empty, guid = Guid.Empty };
+        //    yield return new { ObjectLogicalName = string.Empty};
+
+        //    foreach (DataRow row in tbl.Rows)
+        //        //yield return new { ObjectLogicalName = row["ObjectLogicalName"].ToString(), guid = (Guid)row["guid"] };
+        //        yield return new { ObjectLogicalName = row[resmgr.GetString("labelLxNumber", ci)].ToString() };
+        //}
+
+
+
+        //private void dataGridViewEventsAndAlarms_BindingContextChanged(object sender, EventArgs e)
+        //{
+        //    if (dataGridViewEventsAndAlarms.DataSource == null) return;
+
+        //    foreach (DataGridViewColumn col in dataGridViewEventsAndAlarms.Columns)
+        //    {
+        //        col.HeaderCell = new
+        //            DataGridViewAutoFilterColumnHeaderCell(col.HeaderCell);
+        //    }
+        //    dataGridViewEventsAndAlarms.AutoResizeColumns();
+        //}
 
     }
 }

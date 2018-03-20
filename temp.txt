@@ -773,3 +773,96 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            DataTable dtLxNum = table.DefaultView.ToTable(true, resmgr.GetString("labelLxNumber", ci));
+            //dtLxNum.Rows.Add("");
+
+            DataRow dtrow = dtLxNum.NewRow();
+            dtrow[0] = "";
+            dtLxNum.Rows.Add(dtrow);
+
+            //dtLxNum.Merge(table.DefaultView.ToTable(true, resmgr.GetString("labelLxNumber", ci)));
+            comboBoxLxNumber.DataSource = dtLxNum;
+            comboBoxLxNumber.DisplayMember = resmgr.GetString("labelLxNumber", ci);
+            comboBoxLxNumber.SelectedText = " ";
+
+            DataTable dtLxChannel = table.DefaultView.ToTable(true, resmgr.GetString("labelChannel", ci));
+            comboBoxLxChannel.DataSource = dtLxChannel;
+            comboBoxLxChannel.DisplayMember = resmgr.GetString("labelChannel", ci);
+
+
+
+            //comboBoxLxNumber.DataSource = customersBindingSource;
+            //comboBoxLxNumber.DisplayMember = resmgr.GetString("labelLxNumber", ci);
+            //comboBoxLxNumber
+
+            //customersBindingSource.Filter = string.Format("dataGridViewEventsAndAlarms = '{1}'", comboBoxLxNumber.Text);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

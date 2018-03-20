@@ -43,12 +43,19 @@
             this.labelInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelAboutProgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageDecEventTable = new System.Windows.Forms.TabPage();
+            this.comboBoxLxChannel = new System.Windows.Forms.ComboBox();
             this.comboBoxLxNumber = new System.Windows.Forms.ComboBox();
             this.dataGridViewEventsAndAlarms = new System.Windows.Forms.DataGridView();
             this.tabPageBin = new System.Windows.Forms.TabPage();
             this.richTextBoxBin = new System.Windows.Forms.RichTextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.comboBoxLxChannel = new System.Windows.Forms.ComboBox();
+            this.comboBoxEvAl = new System.Windows.Forms.ComboBox();
+            this.comboBoxMessageText = new System.Windows.Forms.ComboBox();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.comboBoxGroup = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabPageDecEventTable.SuspendLayout();
@@ -61,9 +68,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 443);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 479);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(923, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(945, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -80,7 +87,7 @@
             this.labelInfoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(923, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(945, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -165,27 +172,42 @@
             // 
             // tabPageDecEventTable
             // 
+            this.tabPageDecEventTable.Controls.Add(this.dateTimePickerTo);
+            this.tabPageDecEventTable.Controls.Add(this.dateTimePickerFrom);
+            this.tabPageDecEventTable.Controls.Add(this.comboBoxGroup);
+            this.tabPageDecEventTable.Controls.Add(this.comboBoxCategory);
+            this.tabPageDecEventTable.Controls.Add(this.comboBoxStatus);
+            this.tabPageDecEventTable.Controls.Add(this.comboBoxMessageText);
+            this.tabPageDecEventTable.Controls.Add(this.comboBoxEvAl);
             this.tabPageDecEventTable.Controls.Add(this.comboBoxLxChannel);
             this.tabPageDecEventTable.Controls.Add(this.comboBoxLxNumber);
             this.tabPageDecEventTable.Controls.Add(this.dataGridViewEventsAndAlarms);
             this.tabPageDecEventTable.Location = new System.Drawing.Point(4, 22);
             this.tabPageDecEventTable.Name = "tabPageDecEventTable";
             this.tabPageDecEventTable.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDecEventTable.Size = new System.Drawing.Size(900, 387);
+            this.tabPageDecEventTable.Size = new System.Drawing.Size(922, 423);
             this.tabPageDecEventTable.TabIndex = 2;
             this.tabPageDecEventTable.Text = "tabPageDecEventTable";
             this.tabPageDecEventTable.UseVisualStyleBackColor = true;
             // 
+            // comboBoxLxChannel
+            // 
+            this.comboBoxLxChannel.DropDownWidth = 60;
+            this.comboBoxLxChannel.FormattingEnabled = true;
+            this.comboBoxLxChannel.Location = new System.Drawing.Point(238, 32);
+            this.comboBoxLxChannel.Name = "comboBoxLxChannel";
+            this.comboBoxLxChannel.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxLxChannel.TabIndex = 2;
+            this.comboBoxLxChannel.SelectedValueChanged += new System.EventHandler(this.comboBoxLxNumber_SelectedValueChanged);
+            // 
             // comboBoxLxNumber
             // 
             this.comboBoxLxNumber.FormattingEnabled = true;
-            this.comboBoxLxNumber.Items.AddRange(new object[] {
-            "82",
-            " "});
-            this.comboBoxLxNumber.Location = new System.Drawing.Point(177, 6);
+            this.comboBoxLxNumber.Location = new System.Drawing.Point(177, 32);
             this.comboBoxLxNumber.Name = "comboBoxLxNumber";
             this.comboBoxLxNumber.Size = new System.Drawing.Size(60, 21);
             this.comboBoxLxNumber.TabIndex = 1;
+            this.comboBoxLxNumber.SelectedValueChanged += new System.EventHandler(this.comboBoxLxNumber_SelectedValueChanged);
             // 
             // dataGridViewEventsAndAlarms
             // 
@@ -193,11 +215,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewEventsAndAlarms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEventsAndAlarms.Location = new System.Drawing.Point(6, 33);
+            this.dataGridViewEventsAndAlarms.Location = new System.Drawing.Point(6, 57);
             this.dataGridViewEventsAndAlarms.Name = "dataGridViewEventsAndAlarms";
-            this.dataGridViewEventsAndAlarms.Size = new System.Drawing.Size(888, 321);
+            this.dataGridViewEventsAndAlarms.Size = new System.Drawing.Size(910, 333);
             this.dataGridViewEventsAndAlarms.TabIndex = 0;
-            this.dataGridViewEventsAndAlarms.BindingContextChanged += new System.EventHandler(this.dataGridViewEventsAndAlarms_BindingContextChanged);
             // 
             // tabPageBin
             // 
@@ -205,7 +226,7 @@
             this.tabPageBin.Location = new System.Drawing.Point(4, 22);
             this.tabPageBin.Name = "tabPageBin";
             this.tabPageBin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBin.Size = new System.Drawing.Size(895, 387);
+            this.tabPageBin.Size = new System.Drawing.Size(900, 387);
             this.tabPageBin.TabIndex = 0;
             this.tabPageBin.Text = "labelBin";
             this.tabPageBin.UseVisualStyleBackColor = true;
@@ -231,22 +252,79 @@
             this.tabControl.Location = new System.Drawing.Point(12, 27);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(908, 413);
+            this.tabControl.Size = new System.Drawing.Size(930, 449);
             this.tabControl.TabIndex = 2;
             // 
-            // comboBoxLxChannel
+            // comboBoxEvAl
             // 
-            this.comboBoxLxChannel.FormattingEnabled = true;
-            this.comboBoxLxChannel.Location = new System.Drawing.Point(238, 6);
-            this.comboBoxLxChannel.Name = "comboBoxLxChannel";
-            this.comboBoxLxChannel.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxLxChannel.TabIndex = 2;
+            this.comboBoxEvAl.DropDownWidth = 110;
+            this.comboBoxEvAl.FormattingEnabled = true;
+            this.comboBoxEvAl.Location = new System.Drawing.Point(299, 32);
+            this.comboBoxEvAl.Name = "comboBoxEvAl";
+            this.comboBoxEvAl.Size = new System.Drawing.Size(110, 21);
+            this.comboBoxEvAl.TabIndex = 3;
+            // 
+            // comboBoxMessageText
+            // 
+            this.comboBoxMessageText.DropDownWidth = 110;
+            this.comboBoxMessageText.FormattingEnabled = true;
+            this.comboBoxMessageText.Location = new System.Drawing.Point(410, 32);
+            this.comboBoxMessageText.Name = "comboBoxMessageText";
+            this.comboBoxMessageText.Size = new System.Drawing.Size(199, 21);
+            this.comboBoxMessageText.TabIndex = 4;
+            // 
+            // comboBoxStatus
+            // 
+            this.comboBoxStatus.DropDownWidth = 110;
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Location = new System.Drawing.Point(610, 32);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(109, 21);
+            this.comboBoxStatus.TabIndex = 5;
+            // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.DropDownWidth = 110;
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(719, 32);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(110, 21);
+            this.comboBoxCategory.TabIndex = 6;
+            // 
+            // comboBoxGroup
+            // 
+            this.comboBoxGroup.DropDownWidth = 110;
+            this.comboBoxGroup.FormattingEnabled = true;
+            this.comboBoxGroup.Location = new System.Drawing.Point(830, 32);
+            this.comboBoxGroup.Name = "comboBoxGroup";
+            this.comboBoxGroup.Size = new System.Drawing.Size(69, 21);
+            this.comboBoxGroup.TabIndex = 7;
+            // 
+            // dateTimePickerFrom
+            // 
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(6, 6);
+            this.dateTimePickerFrom.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.dateTimePickerFrom.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(168, 20);
+            this.dateTimePickerFrom.TabIndex = 8;
+            this.dateTimePickerFrom.Value = new System.DateTime(2016, 1, 1, 0, 0, 0, 0);
+            // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.Location = new System.Drawing.Point(6, 32);
+            this.dateTimePickerTo.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.dateTimePickerTo.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(168, 20);
+            this.dateTimePickerTo.TabIndex = 9;
+            this.dateTimePickerTo.Value = new System.DateTime(2020, 12, 30, 0, 0, 0, 0);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 465);
+            this.ClientSize = new System.Drawing.Size(945, 501);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -289,6 +367,13 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.ComboBox comboBoxLxNumber;
         private System.Windows.Forms.ComboBox comboBoxLxChannel;
+        private System.Windows.Forms.ComboBox comboBoxEvAl;
+        private System.Windows.Forms.ComboBox comboBoxMessageText;
+        private System.Windows.Forms.ComboBox comboBoxStatus;
+        private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.ComboBox comboBoxGroup;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTo;
     }
 }
 
