@@ -3274,6 +3274,24 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        internal static string labelActive {
+            get {
+                return ResourceManager.GetString("labelActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alert.
+        /// </summary>
+        internal static string labelAlert {
+            get {
+                return ResourceManager.GetString("labelAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Binary file.
         /// </summary>
         internal static string labelBin {
@@ -3346,6 +3364,15 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event.
+        /// </summary>
+        internal static string labelEvent {
+            get {
+                return ResourceManager.GetString("labelEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         internal static string labelFile {
@@ -3373,7 +3400,7 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LX Number.
+        ///   Looks up a localized string similar to LX_Number.
         /// </summary>
         internal static string labelLxNumber {
             get {
@@ -3387,6 +3414,15 @@ namespace SPA5BlackBoxReader {
         internal static string labelName {
             get {
                 return ResourceManager.GetString("labelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not active.
+        /// </summary>
+        internal static string labelNotActive {
+            get {
+                return ResourceManager.GetString("labelNotActive", resourceCulture);
             }
         }
         

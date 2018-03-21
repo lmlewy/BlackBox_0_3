@@ -244,7 +244,7 @@
     <value>Grupa</value>
   </data>
   <data name="labelLxNumber" xml:space="preserve">
-    <value>Numer przejazdu</value>
+    <value>Numer_przejazdu</value>
   </data>
   <data name="labelName" xml:space="preserve">
     <value>Nazwa zdarzenia/alarmu</value>
@@ -1245,10 +1245,22 @@
   <data name="labelDecode" xml:space="preserve">
     <value>Dekoduj pliki</value>
   </data>
-  <data name="alertNumber1" xml:space="preserve">
+  <data name="alertNumber" xml:space="preserve">
     <value>Alarm numer </value>
   </data>
   <data name="eventNumber" xml:space="preserve">
     <value>Zdarzenie numer </value>
+  </data>
+  <data name="labelActive" xml:space="preserve">
+    <value>Aktywny</value>
+  </data>
+  <data name="labelAlert" xml:space="preserve">
+    <value>Alarm</value>
+  </data>
+  <data name="labelEvent" xml:space="preserve">
+    <value>Zdarzenie</value>
+  </data>
+  <data name="labelNotActive" xml:space="preserve">
+    <value>Nie aktywny</value>
   </data>
 </root>

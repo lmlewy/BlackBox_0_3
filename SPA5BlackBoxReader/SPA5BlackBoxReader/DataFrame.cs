@@ -47,7 +47,7 @@ namespace SPA5BlackBoxReader
                         Message mess = new Message();
                         List<string> tempList = new List<string>();
 
-                        tempList.Add(timeStamp.ToString());
+                        tempList.Add(timeStamp.ToString(@"yyyy\/MM\/dd HH:mm:ss") );
                         tempList.Add(lxNumber.ToString());
                         tempList.Add(lxChannel.ToString());
                         tempList.AddRange(mess.DecodeMessageToList(byteMessage));

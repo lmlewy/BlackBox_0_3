@@ -50,4 +50,3 @@ E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxRead
 E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.Lang.pl-PL.resources
 E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.csproj.GenerateResource.Cache
 E:\praca\SPA5BlackBoxReader_0_3\BlackBox_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\pl-PL\SPA5BlackBoxReader.resources.dll
-C:\Projekty\EWP\SPA5BlackBoxReader\SPA5BlackBoxReader_0_3\SPA5BlackBoxReader\SPA5BlackBoxReader\obj\Debug\SPA5BlackBoxReader.csprojResolveAssemblyReference.cache

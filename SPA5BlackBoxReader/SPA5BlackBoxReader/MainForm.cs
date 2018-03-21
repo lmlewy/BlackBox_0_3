@@ -52,11 +52,23 @@ namespace SPA5BlackBoxReader
             comboBoxEvAl.Items.Add("*");
             comboBoxEvAl.SelectedText = "*";
 
+            comboBoxMessageText.Items.Add("*");
+            comboBoxMessageText.SelectedText = "*";
+
+            comboBoxStatus.Items.Add("*");
+            comboBoxStatus.SelectedText = "*";
+
+            comboBoxCategory.Items.Add("*");
+            comboBoxCategory.SelectedText = "*";
+
+            comboBoxGroup.Items.Add("*");
+            comboBoxGroup.SelectedText = "*";
+
             dateTimePickerFrom.Format = DateTimePickerFormat.Custom;
-            dateTimePickerFrom.CustomFormat = "dd/MM/yyyy hh:mm:ss";
+            dateTimePickerFrom.CustomFormat = "yyyy/MM/dd hh:mm:ss";
 
             dateTimePickerTo.Format = DateTimePickerFormat.Custom;
-            dateTimePickerTo.CustomFormat = "dd/MM/yyyy hh:mm:ss";  
+            dateTimePickerTo.CustomFormat = "yyyy/MM/dd hh:mm:ss";  
 
         }
 
@@ -227,6 +239,9 @@ namespace SPA5BlackBoxReader
             List<string[]> decodedFramesList = new List<string[]>();
 
             //DataTable table = new DataTable();
+            table = null;
+            table = new DataTable();
+            //table.Clear();
             table.Columns.Add(resmgr.GetString("labelTime", ci), typeof(string)) ;
             table.Columns.Add(resmgr.GetString("labelLxNumber", ci), typeof(string));
             table.Columns.Add(resmgr.GetString("labelChannel", ci), typeof(string));
@@ -267,25 +282,30 @@ namespace SPA5BlackBoxReader
             listLxChannel.Insert(0, "*");
             listLxChannel = listLxChannel.Distinct().ToList();
             comboBoxLxChannel.DataSource = listLxChannel;
-            //comboBoxLxChannel.DisplayMember = "Key";
 
             List<string> listLxEvAl = new List<string>();
             listLxEvAl.Insert(0, "*");
-            listLxEvAl.Insert(1, "Event");
-            listLxEvAl.Insert(2, "Alert");
+            listLxEvAl.Insert(1, resmgr.GetString("labelAlert", ci));
+            listLxEvAl.Insert(2, resmgr.GetString("labelEvent", ci));
             comboBoxEvAl.DataSource = listLxEvAl;
-            //comboBoxEvAl.DisplayMember = "Key";
 
+            //List<string> listStatus = new List<string>(table.Rows.Cast<DataRow>().Select(row => row[resmgr.GetString("labelStatus", ci)].ToString()));
+            List<string> listStatus = new List<string>();
+            listStatus.Insert(0, "*");
+            listStatus.Insert(1, " ");
+            listStatus.Insert(2, resmgr.GetString("labelActive", ci));
+            listStatus.Insert(3, resmgr.GetString("labelNotActive", ci));
+            comboBoxStatus.DataSource = listStatus;
 
+            List<string> listCategory = new List<string>(table.Rows.Cast<DataRow>().Select(row => row[resmgr.GetString("labelCategory", ci)].ToString()));
+            listCategory.Insert(0, "*");
+            listCategory = listCategory.Distinct().ToList();
+            comboBoxCategory.DataSource = listCategory;
 
-
-
-
-
-
-
-
-
+            List<string> listGroup = new List<string>(table.Rows.Cast<DataRow>().Select(row => row[resmgr.GetString("labelGroup", ci)].ToString()));
+            listGroup.Insert(0, "*");
+            listGroup = listGroup.Distinct().ToList();
+            comboBoxGroup.DataSource = listGroup;
 
         }
 
@@ -293,24 +313,42 @@ namespace SPA5BlackBoxReader
         {
             DataTable filteredDataTable = null;
 
-            if ((comboBoxLxNumber.SelectedItem != "*") && (comboBoxLxChannel.SelectedItem != "*"))
-            {
+            //if ((comboBoxLxNumber.SelectedItem != "*") && (comboBoxLxChannel.SelectedItem != "*"))
+            //{
 
-                MessageBox.Show("nie pusty");
+                //MessageBox.Show("nie pusty");
 
                 //https://stackoverflow.com/questions/13012585/how-i-can-filter-a-datatable
                 //http://www.csharp-examples.net/dataview-rowfilter/
-                string _sqlWhere = resmgr.GetString("labelChannel", ci) + " = '" + comboBoxLxChannel.SelectedItem + "'";
-                filteredDataTable = table.Select(_sqlWhere).CopyToDataTable();
+                string _sqlWhere = resmgr.GetString("labelTime", ci) + " >= " + "'" + dateTimePickerFrom.Text + "'";
+                _sqlWhere += " AND " + resmgr.GetString("labelTime", ci) + " <= " + "'" + dateTimePickerTo.Text + "'";
+                if (comboBoxLxNumber.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelLxNumber", ci) + " = '" + comboBoxLxNumber.SelectedItem + "'";
+                if (comboBoxLxChannel.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelChannel", ci) + " = '" + comboBoxLxChannel.SelectedItem + "'";
+                if (comboBoxEvAl.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelNumber", ci) + " LIKE '" + comboBoxEvAl.SelectedItem + "*'";
+                // tu trzeba coś dołożyć
+                if (comboBoxStatus.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelStatus", ci) + " LIKE '%" + comboBoxStatus.SelectedItem + "%'";
+                if (comboBoxCategory.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelCategory", ci) + " LIKE '%" + comboBoxCategory.SelectedItem + "%'";
+                if (comboBoxGroup.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelGroup", ci) + " LIKE '%" + comboBoxGroup.SelectedItem + "%'";
+
+                try
+                {
+                    filteredDataTable = table.Select(_sqlWhere).CopyToDataTable();
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Pusty zbiór");
+
+                }
+
 
                 updateDataGridViewEventsAndAlarms(filteredDataTable);
 
-            }
-            else
-            {
-                MessageBox.Show("pusty");
-                updateDataGridViewEventsAndAlarms(table);
-            }
+            //}
+            //else
+            //{
+                //MessageBox.Show("pusty");
+                //updateDataGridViewEventsAndAlarms(table);
+            //}
 
 
             //updateDataGridViewEventsAndAlarms(filteredDataTable);
@@ -325,20 +363,27 @@ namespace SPA5BlackBoxReader
             {
                 DataGridViewColumn column = dataGridViewEventsAndAlarms.Columns[0];
                 column.Width = 130;
+                column.Resizable = DataGridViewTriState.False;
                 column = dataGridViewEventsAndAlarms.Columns[1];
                 column.Width = 60;
+                column.Resizable = DataGridViewTriState.False;
                 column = dataGridViewEventsAndAlarms.Columns[2];
                 column.Width = 60;
+                column.Resizable = DataGridViewTriState.False;
                 column = dataGridViewEventsAndAlarms.Columns[3];
                 column.Width = 110;
+                column.Resizable = DataGridViewTriState.False;
                 column = dataGridViewEventsAndAlarms.Columns[4];
                 column.Width = 200;
                 column = dataGridViewEventsAndAlarms.Columns[5];
                 column.Width = 110;
+                column.Resizable = DataGridViewTriState.False;
                 column = dataGridViewEventsAndAlarms.Columns[6];
                 column.Width = 110;
+                column.Resizable = DataGridViewTriState.False;
                 column = dataGridViewEventsAndAlarms.Columns[7];
                 column.Width = 70;
+                column.Resizable = DataGridViewTriState.False;
             }
         }
 
