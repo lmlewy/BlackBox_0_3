@@ -18,12 +18,12 @@ namespace SPA5BlackBoxReader
             internalCI = CultureInfo.DefaultThreadCurrentCulture;
         }
 
-        public List<string> Decode(byte[] decEvent)
+        public List<string> Decode(byte[] file)
         {
-            List<string> decodedEvent = new List<string>();
+            List<string> decodedFile = new List<string>();
+            decodedFile.Add("File descr.");
 
-
-            return decodedEvent;
+            return decodedFile;
         }
 
 

@@ -39,17 +39,41 @@ namespace SPA5BlackBoxReader
             //}
             //// to działa ale mogło by byc szybsze
 
-            //może jest szybsze
-            int i = binFile.Length - (1+5);
+            //może jest szybsze ale tu coś jest nie tak bo nie odczytuje wszystkich ramek!!!
+            //int i = binFile.Length - (1+5);
+            //do
+            //{
+            //    if ((binFile[i] == 0xff) && (binFile[i + 1] == 0xff) && (binFile[i + 2] == 0xff) && (binFile[i + 3] == 0xff) && (binFile[i + 4] != 0xff))
+            //    {
+            //        int frameLenght = (binFile[i + 4] << 8) + binFile[i + 5];
+            //        byte[] b = new byte[frameLenght];
+            //        for (int j = 0; j < frameLenght; j++)
+            //        {
+            //            b[j] = binFile[i + 4 + j];
+            //        }
+            //        DataFrame df = new DataFrame();
+            //        List<string[]> tempList = df.DecodeDataFrameToList(b);
+
+            //        foreach (string[] s in tempList)
+            //            DecodedFrameList.Add(s);
+
+            //        i -= frameLenght;
+            //    }
+            //    i--;
+            //} while (i > 0);
+
+
+            //kolejny sposob
+            int i = 4;
             do
             {
-                if ((binFile[i] == 0xff) && (binFile[i + 1] == 0xff) && (binFile[i + 2] == 0xff) && (binFile[i + 3] == 0xff) && (binFile[i + 4] != 0xff))
+                if ((binFile[i] != 0xff) && (binFile[i - 1] == 0xff) && (binFile[i - 2] == 0xff) && (binFile[i - 3] == 0xff) && (binFile[i - 4] == 0xff))
                 {
-                    int frameLenght = (binFile[i + 4] << 8) + binFile[i + 5];
+                    int frameLenght = (binFile[i] << 8) + binFile[i + 1];
                     byte[] b = new byte[frameLenght];
                     for (int j = 0; j < frameLenght; j++)
                     {
-                        b[j] = binFile[i + 4 + j];
+                        b[j] = binFile[i + j];
                     }
                     DataFrame df = new DataFrame();
                     List<string[]> tempList = df.DecodeDataFrameToList(b);
@@ -57,17 +81,22 @@ namespace SPA5BlackBoxReader
                     foreach (string[] s in tempList)
                         DecodedFrameList.Add(s);
 
-                    i -= frameLenght;
+                    i += (frameLenght - 1);
                 }
-                i--;
-            } while (i > 0);
+                else
+                {
+                    i++;
+                }
+
+
+            } while (i < binFile.Length);
+
+
+
+
 
              return DecodedFrameList;
         }
-
-
-
-
 
     }
 }

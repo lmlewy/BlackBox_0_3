@@ -60,6 +60,26 @@ namespace SPA5BlackBoxReader
                         listOfMessages.Add(temp);
                     }
                 }
+                else if (blkType == 2)
+                {
+                    byte[] byteMessage = new byte[blkLenght];
+                    string fileContent = null;
+                    string[] fileCont = new string[5];
+
+                    for (int i = 24; i < blkLenght - 4; i++ )
+                    {
+                        if (frame[i] != 0x01)
+                            fileContent += (char)frame[i] ;
+                    }
+                    fileCont[0] = timeStamp.ToString(@"yyyy\/MM\/dd HH:mm:ss");
+                    fileCont[1] = lxNumber.ToString();
+                    fileCont[2] = lxChannel.ToString();
+                    fileCont[3] = "Software version";
+                    fileCont[4] = fileContent;      //tu czegoś brakuje
+
+                    listOfMessages.Add(fileCont);
+
+                }
             }
             return listOfMessages;
         }

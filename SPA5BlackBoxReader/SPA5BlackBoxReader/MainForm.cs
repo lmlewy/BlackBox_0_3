@@ -289,6 +289,12 @@ namespace SPA5BlackBoxReader
             listLxEvAl.Insert(2, resmgr.GetString("labelEvent", ci));
             comboBoxEvAl.DataSource = listLxEvAl;
 
+            List<string> listDecodedMessages = new List<string>(table.Rows.Cast<DataRow>().Select(row => row[resmgr.GetString("labelName", ci)].ToString()));
+            listDecodedMessages = listDecodedMessages.Distinct().ToList();
+            listDecodedMessages.Sort();
+            listDecodedMessages.Insert(0, "*");
+            comboBoxMessageText.DataSource = listDecodedMessages;
+            
             //List<string> listStatus = new List<string>(table.Rows.Cast<DataRow>().Select(row => row[resmgr.GetString("labelStatus", ci)].ToString()));
             List<string> listStatus = new List<string>();
             listStatus.Insert(0, "*");
@@ -326,8 +332,10 @@ namespace SPA5BlackBoxReader
                 if (comboBoxLxChannel.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelChannel", ci) + " = '" + comboBoxLxChannel.SelectedItem + "'";
                 if (comboBoxEvAl.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelNumber", ci) + " LIKE '" + comboBoxEvAl.SelectedItem + "*'";
                 // tu trzeba coś dołożyć
+                if (comboBoxMessageText.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelName", ci) + " LIKE '%" + comboBoxMessageText.SelectedItem + "%'";
+
                 if (comboBoxStatus.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelStatus", ci) + " LIKE '%" + comboBoxStatus.SelectedItem + "%'";
-                if (comboBoxCategory.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelCategory", ci) + " LIKE '%" + comboBoxCategory.SelectedItem + "%'";
+                if (comboBoxCategory.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelCategory", ci) + " LIKE '%" + comboBoxCategory.SelectedItem + "%'"; //to chyba źle sortuje!!!! znikają rekordy które nie powinny!!!
                 if (comboBoxGroup.SelectedItem != "*") _sqlWhere += " AND " + resmgr.GetString("labelGroup", ci) + " LIKE '%" + comboBoxGroup.SelectedItem + "%'";
 
                 try
@@ -337,7 +345,6 @@ namespace SPA5BlackBoxReader
                 catch (Exception exc)
                 {
                     MessageBox.Show("Pusty zbiór");
-
                 }
 
 

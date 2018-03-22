@@ -18,12 +18,20 @@ namespace SPA5BlackBoxReader
             internalCI = CultureInfo.DefaultThreadCurrentCulture;
         }
 
-        public List<string> Decode(byte[] decEvent)
+        public List<string> Decode(byte[] elsDiagnostics)
         {
-            List<string> decodedEvent = new List<string>();
+            List<string> decodedElsDiagnostics = new List<string>();
+
+            string WDNumber = elsDiagnostics[0].ToString() ;
+            string WDStatus = elsDiagnostics[1].ToString();
+            string F1Level = elsDiagnostics[2].ToString();
+            string F2Level = elsDiagnostics[3].ToString();
+
+            decodedElsDiagnostics.Add("ELS-95 Diagn");
+            decodedElsDiagnostics.Add(WDNumber + " " + WDStatus + " " + F1Level + " " + F2Level);
 
 
-            return decodedEvent;
+            return decodedElsDiagnostics;
         }
 
 

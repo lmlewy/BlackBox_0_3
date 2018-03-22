@@ -148,7 +148,7 @@
     <value>Alarm nie aktywny</value>
   </data>
   <data name="alertActive" xml:space="preserve">
-    <value>Alarm aktywny</value>
+    <value>Alarm aktywny!</value>
   </data>
   <data name="alertCategoryNotRecognized" xml:space="preserve">
     <value>Kategoria alarmu nie rozpoznana</value>
@@ -157,7 +157,7 @@
     <value>Zdarzenie nie aktywne</value>
   </data>
   <data name="eventActive" xml:space="preserve">
-    <value>Zdarzenie aktywne</value>
+    <value>Zdarzenie aktywne!</value>
   </data>
   <data name="eventNotRecognized" xml:space="preserve">
     <value>Zdarzenie nie rozpoznane</value>
@@ -244,10 +244,10 @@
     <value>Grupa</value>
   </data>
   <data name="labelLxNumber" xml:space="preserve">
-    <value>Numer_przejazdu</value>
+    <value>NumerPrzejazdu</value>
   </data>
   <data name="labelName" xml:space="preserve">
-    <value>Nazwa zdarzenia/alarmu</value>
+    <value>NazwaZdarzeniaAlarmu</value>
   </data>
   <data name="labelNumber" xml:space="preserve">
     <value>Numer</value>
@@ -1252,7 +1252,7 @@
     <value>Zdarzenie numer </value>
   </data>
   <data name="labelActive" xml:space="preserve">
-    <value>Aktywny</value>
+    <value>Aktywny!</value>
   </data>
   <data name="labelAlert" xml:space="preserve">
     <value>Alarm</value>

@@ -20,11 +20,16 @@ namespace SPA5BlackBoxReader
 
         public List<string> Decode(byte[] byteToDecode)
         {
-            List<string> decodedAlarm = new List<string>();
+            List<string> decodedLocation = new List<string>();
+            string lxLocation = null;
 
+            for(int i = 0; i < 9; i++)
+                lxLocation += byteToDecode[i].ToString();
 
+            decodedLocation.Add("Location");
+            decodedLocation.Add(lxLocation);
 
-            return decodedAlarm;
+            return decodedLocation;
         }
 
 

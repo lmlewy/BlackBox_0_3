@@ -18,12 +18,18 @@ namespace SPA5BlackBoxReader
             internalCI = CultureInfo.DefaultThreadCurrentCulture;
         }
 
-        public List<string> Decode(byte[] decEvent)
+        public List<string> Decode(byte[] eheDiagnostics)
         {
-            List<string> decodedEvent = new List<string>();
+            List<string> decodedEheDiagnostics = new List<string>();
 
 
-            return decodedEvent;
+
+            decodedEheDiagnostics.Add("EHE-2 Diagn");
+
+
+
+
+            return decodedEheDiagnostics;
         }
 
 

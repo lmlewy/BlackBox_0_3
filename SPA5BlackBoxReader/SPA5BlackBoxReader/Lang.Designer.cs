@@ -1852,7 +1852,7 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alarm active.
+        ///   Looks up a localized string similar to Alarm active!.
         /// </summary>
         internal static string alertActive {
             get {
@@ -3202,7 +3202,7 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Event active.
+        ///   Looks up a localized string similar to Event active!.
         /// </summary>
         internal static string eventActive {
             get {
@@ -3274,7 +3274,7 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Active.
+        ///   Looks up a localized string similar to Active!.
         /// </summary>
         internal static string labelActive {
             get {
@@ -3400,7 +3400,7 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LX_Number.
+        ///   Looks up a localized string similar to LxNumber.
         /// </summary>
         internal static string labelLxNumber {
             get {
@@ -3409,7 +3409,7 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alarm/Event name.
+        ///   Looks up a localized string similar to AlarmEventName.
         /// </summary>
         internal static string labelName {
             get {
