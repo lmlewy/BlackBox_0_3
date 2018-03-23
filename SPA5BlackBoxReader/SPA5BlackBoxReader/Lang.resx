@@ -1263,4 +1263,10 @@
   <data name="labelNotActive" xml:space="preserve">
     <value>Not active</value>
   </data>
+  <data name="labelSaveAll" xml:space="preserve">
+    <value>Save all</value>
+  </data>
+  <data name="labelSaveSellected" xml:space="preserve">
+    <value>Save sellected</value>
+  </data>
 </root>

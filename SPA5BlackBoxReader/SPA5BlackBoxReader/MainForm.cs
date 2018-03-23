@@ -79,6 +79,8 @@ namespace SPA5BlackBoxReader
             this.labelDecodeToolStripMenuItem.Text = resmgr.GetString("labelDecode", ci);
             this.labelChngLangToolStripMenuItem.Text = resmgr.GetString("labelChngLang", ci);
             this.labelStopToolStripMenuItem.Text = resmgr.GetString("labelStop", ci);
+            this.labelSaveAllToolStripMenuItem.Text = resmgr.GetString("labelSaveAll", ci);
+            this.labelSaveSelectedToolStripMenuItem.Text = resmgr.GetString("labelSaveSellected", ci);
             this.labelCloseToolStripMenuItem.Text = resmgr.GetString("labelClose", ci);
 
             this.labelInfoToolStripMenuItem.Text = resmgr.GetString("labelInfo", ci);
@@ -392,6 +394,37 @@ namespace SPA5BlackBoxReader
                 column.Width = 70;
                 column.Resizable = DataGridViewTriState.False;
             }
+        }
+
+        private void labelSaveAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog1 = new SaveFileDialog();
+            var iResult = DialogResult;
+
+            //saveFileDialog1.FileName = "unknown.txt"; // jako txt
+            //saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            saveFileDialog1.FileName = "unknown.csv"; // jako csv
+            string filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
+            //saveFileDialog1.Filter = filter;
+            //const string header = "Animal_Name,Hair,Feathers,Eggs,Milk,Airborne,Aquatic,Predator,Toothed,Backbone,Breathes,Venomous,Fins,Legs,Tail,Domestic,Catsize,Type";
+            //StreamWriter writer = null;
+
+
+            //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+            //    {
+
+            //        filter = saveFileDialog1.FileName;
+            //        writer = new StreamWriter(filter);
+            //        writer.WriteLine(header);
+            //        writer.Close();
+
+            //    }
+            //}
+
+
         }
 
 

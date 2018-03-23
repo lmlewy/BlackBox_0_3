@@ -33,12 +33,14 @@
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.labelFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelReadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelDecodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelReadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelChngLangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.polskiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelSaveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelSaveSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelCloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelAboutProgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,28 +96,37 @@
             // labelFileToolStripMenuItem
             // 
             this.labelFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.labelReadToolStripMenuItem,
             this.labelDecodeToolStripMenuItem,
-            this.labelChngLangToolStripMenuItem,
+            this.labelReadToolStripMenuItem,
             this.labelStopToolStripMenuItem,
+            this.labelChngLangToolStripMenuItem,
+            this.labelSaveAllToolStripMenuItem,
+            this.labelSaveSelectedToolStripMenuItem,
             this.labelCloseToolStripMenuItem});
             this.labelFileToolStripMenuItem.Name = "labelFileToolStripMenuItem";
             this.labelFileToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.labelFileToolStripMenuItem.Text = "labelFile";
             // 
-            // labelReadToolStripMenuItem
-            // 
-            this.labelReadToolStripMenuItem.Name = "labelReadToolStripMenuItem";
-            this.labelReadToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.labelReadToolStripMenuItem.Text = "labelRead";
-            this.labelReadToolStripMenuItem.Click += new System.EventHandler(this.labelReadToolStripMenuItem_Click);
-            // 
             // labelDecodeToolStripMenuItem
             // 
             this.labelDecodeToolStripMenuItem.Name = "labelDecodeToolStripMenuItem";
-            this.labelDecodeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.labelDecodeToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.labelDecodeToolStripMenuItem.Text = "labelDecode";
             this.labelDecodeToolStripMenuItem.Click += new System.EventHandler(this.labelDecodeToolStripMenuItem_Click);
+            // 
+            // labelReadToolStripMenuItem
+            // 
+            this.labelReadToolStripMenuItem.Name = "labelReadToolStripMenuItem";
+            this.labelReadToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.labelReadToolStripMenuItem.Text = "labelRead";
+            this.labelReadToolStripMenuItem.Click += new System.EventHandler(this.labelReadToolStripMenuItem_Click);
+            // 
+            // labelStopToolStripMenuItem
+            // 
+            this.labelStopToolStripMenuItem.Name = "labelStopToolStripMenuItem";
+            this.labelStopToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.labelStopToolStripMenuItem.Text = "labelStop";
+            this.labelStopToolStripMenuItem.Click += new System.EventHandler(this.labelStopToolStripMenuItem_Click);
             // 
             // labelChngLangToolStripMenuItem
             // 
@@ -123,7 +134,7 @@
             this.polskiToolStripMenuItem,
             this.englishToolStripMenuItem});
             this.labelChngLangToolStripMenuItem.Name = "labelChngLangToolStripMenuItem";
-            this.labelChngLangToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.labelChngLangToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.labelChngLangToolStripMenuItem.Text = "labelChngLang";
             // 
             // polskiToolStripMenuItem
@@ -142,17 +153,23 @@
             this.englishToolStripMenuItem.Text = "English";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
-            // labelStopToolStripMenuItem
+            // labelSaveAllToolStripMenuItem
             // 
-            this.labelStopToolStripMenuItem.Name = "labelStopToolStripMenuItem";
-            this.labelStopToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.labelStopToolStripMenuItem.Text = "labelStop";
-            this.labelStopToolStripMenuItem.Click += new System.EventHandler(this.labelStopToolStripMenuItem_Click);
+            this.labelSaveAllToolStripMenuItem.Name = "labelSaveAllToolStripMenuItem";
+            this.labelSaveAllToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.labelSaveAllToolStripMenuItem.Text = "labelSaveAll";
+            this.labelSaveAllToolStripMenuItem.Click += new System.EventHandler(this.labelSaveAllToolStripMenuItem_Click);
+            // 
+            // labelSaveSelectedToolStripMenuItem
+            // 
+            this.labelSaveSelectedToolStripMenuItem.Name = "labelSaveSelectedToolStripMenuItem";
+            this.labelSaveSelectedToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.labelSaveSelectedToolStripMenuItem.Text = "LabelSaveSelected";
             // 
             // labelCloseToolStripMenuItem
             // 
             this.labelCloseToolStripMenuItem.Name = "labelCloseToolStripMenuItem";
-            this.labelCloseToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.labelCloseToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.labelCloseToolStripMenuItem.Text = "LabelClose";
             this.labelCloseToolStripMenuItem.Click += new System.EventHandler(this.labelCloseToolStripMenuItem_Click);
             // 
@@ -381,6 +398,8 @@
         private System.Windows.Forms.ComboBox comboBoxGroup;
         private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
+        private System.Windows.Forms.ToolStripMenuItem labelSaveAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem labelSaveSelectedToolStripMenuItem;
     }
 }
 

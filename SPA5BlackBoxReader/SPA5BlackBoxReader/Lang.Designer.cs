@@ -3445,6 +3445,24 @@ namespace SPA5BlackBoxReader {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save all.
+        /// </summary>
+        internal static string labelSaveAll {
+            get {
+                return ResourceManager.GetString("labelSaveAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save sellected.
+        /// </summary>
+        internal static string labelSaveSellected {
+            get {
+                return ResourceManager.GetString("labelSaveSellected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
         internal static string labelStatus {

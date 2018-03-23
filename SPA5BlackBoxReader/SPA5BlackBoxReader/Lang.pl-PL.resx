@@ -1263,4 +1263,10 @@
   <data name="labelNotActive" xml:space="preserve">
     <value>Nie aktywny</value>
   </data>
+  <data name="labelSaveAll" xml:space="preserve">
+    <value>Zapisz wszystko</value>
+  </data>
+  <data name="labelSaveSellected" xml:space="preserve">
+    <value>Zapisz wyfiltrowane</value>
+  </data>
 </root>
