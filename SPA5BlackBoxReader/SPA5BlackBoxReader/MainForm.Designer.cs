@@ -308,6 +308,7 @@
             this.dataGridViewEventsAndAlarms.Name = "dataGridViewEventsAndAlarms";
             this.dataGridViewEventsAndAlarms.Size = new System.Drawing.Size(910, 333);
             this.dataGridViewEventsAndAlarms.TabIndex = 0;
+            this.dataGridViewEventsAndAlarms.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewEventsAndAlarms_DataBindingComplete);
             // 
             // tabPageBin
             // 

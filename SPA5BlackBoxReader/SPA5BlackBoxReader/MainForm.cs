@@ -164,6 +164,8 @@ namespace SPA5BlackBoxReader
         {
             var openFileDialog1 = new OpenFileDialog();
             var iResult = DialogResult;
+            int numberOfFiles = openFileDialog1.FileNames.Length;
+            toolStripProgressBar.Maximum = numberOfFiles + 1;
             openFileDialog1.Title = "Podaj plik czarnej skrzynki";
             openFileDialog1.Filter = "BIN Files (*.bin) | *.bin";
             openFileDialog1.Multiselect = true;
@@ -171,12 +173,16 @@ namespace SPA5BlackBoxReader
             openFileDialog1.CheckFileExists = true;
             iResult = openFileDialog1.ShowDialog();
 
+            toolStripProgressBar.Value = 0;
+
             if ((iResult != System.Windows.Forms.DialogResult.Cancel) && (openFileDialog1.FileName.Length != 0))
             {
                 filesToRead = openFileDialog1.FileNames;
                 showData(filesToRead);
+                toolStripProgressBar.Value++; // tu cos nie gra
             }
 
+            toolStripProgressBar.Value = 0;
         }
 
         private void showData(string[] filesToRead)
@@ -424,6 +430,41 @@ namespace SPA5BlackBoxReader
             //    }
             //}
 
+
+        }
+
+        private void dataGridViewEventsAndAlarms_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewRow dgvr in dataGridViewEventsAndAlarms.Rows)
+            {
+                DataRowView drv = dgvr.DataBoundItem as DataRowView;
+                if (drv != null)
+                {
+                    DataRow dr = drv.Row;
+                    if (dr != null)
+                    {
+                        if (dr[3].Equals("SPA-5 Mode"))
+                        {
+                            //dgvr.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
+                            dgvr.DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else if (dr[3].Equals("ELS-95 Diagn"))
+                        {
+                            dgvr.DefaultCellStyle.ForeColor = System.Drawing.Color.Purple;
+                        }
+                        else if (dr[5].Equals("Alarm active!"))
+                        {
+                            dgvr.DefaultCellStyle.ForeColor = System.Drawing.Color.Red;
+                        }
+                        else
+                        {
+
+                        }
+
+
+                    }
+                }
+            }
 
         }
 
